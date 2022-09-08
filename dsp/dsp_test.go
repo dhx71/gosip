@@ -17,7 +17,7 @@ package dsp_test
 import (
 	"testing"
 
-	"github.com/jart/gosip/dsp"
+	"github.com/dhx71/gosip/dsp"
 )
 
 func TestL16MixSat160(t *testing.T) {

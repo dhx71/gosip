@@ -24,10 +24,10 @@ import (
 	"net"
 	"time"
 
-	"github.com/jart/gosip/rtp"
-	"github.com/jart/gosip/sdp"
-	"github.com/jart/gosip/sip"
-	"github.com/jart/gosip/util"
+	"github.com/dhx71/gosip/rtp"
+	"github.com/dhx71/gosip/sdp"
+	"github.com/dhx71/gosip/sip"
+	"github.com/dhx71/gosip/util"
 )
 
 const (
@@ -461,7 +461,7 @@ func (dls *dialogState) resendResponse() bool {
 		dls.responseResends++
 		dls.responseTimer = time.After(duration(resendInterval))
 	} else {
-		// TODO(jart): If resending INVITE 200 OK, start sending BYE.
+		// TODO(dhx71): If resending INVITE 200 OK, start sending BYE.
 		log.Printf("Timeout sending response: %s (%s)\r\n", dls.sock.RemoteAddr(), dls.dest)
 		if !dls.popRoute() {
 			return false

@@ -153,10 +153,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jart/gosip/rtp"
-	"github.com/jart/gosip/sdp"
-	"github.com/jart/gosip/sip"
-	"github.com/jart/gosip/util"
+	"github.com/dhx71/gosip/rtp"
+	"github.com/dhx71/gosip/sdp"
+	"github.com/dhx71/gosip/sip"
+	"github.com/dhx71/gosip/util"
 )
 
 func TestCallToEchoApp(t *testing.T) {

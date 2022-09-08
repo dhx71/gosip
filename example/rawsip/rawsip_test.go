@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jart/gosip/util"
+	"github.com/dhx71/gosip/util"
 )
 
 // An 'OPTIONS' message is used to:
@@ -32,7 +32,6 @@ import (
 // - Ping a server to see if it's alive.
 // - Keep a connection alive in nat situations.
 // - Ask a user agent what features they support.
-//
 func TestRawSIPOptions(t *testing.T) {
 	// create a new udp socket bound to a random port and "connect"
 	// the socket to the remote address
