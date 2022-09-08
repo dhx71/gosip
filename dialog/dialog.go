@@ -382,7 +382,9 @@ func (dls *dialogState) handleRequest(msg *sip.Msg) bool {
 	case sip.MethodInvite: // Re-INVITEs are used to change the RTP or signalling path.
 		dls.remote = msg
 		dls.checkSDP(msg)
-		return dls.sendResponse(NewResponse(msg, sip.StatusOK))
+		respMsg := NewResponse(msg, sip.StatusOK)
+		respMsg.Payload = dls.invite.Payload
+		return dls.sendResponse(respMsg)
 	case sip.MethodAck: // Re-INVITE response has been ACK'd.
 		dls.response = nil
 		dls.responseTimer = nil
