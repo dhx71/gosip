@@ -66,6 +66,34 @@ func (addr *Addr) Tag() *Addr {
 	return addr
 }
 
+// Append or replace a parameter
+func (addr *Addr) SetParam(key, value string) {
+	curr := addr.Param
+	for curr != nil {
+		if curr.Name == key {
+			curr.Value = value
+			return
+		}
+		curr = curr.Next
+	}
+	if addr.Param == nil {
+		addr.Param = &Param{key, value, nil}
+	} else {
+		addr.Param = &Param{key, value, addr.Param}
+	}
+}
+
+func (addr *Addr) GetParam(key string) string {
+	curr := addr.Param
+	for curr != nil {
+		if curr.Name == key {
+			return curr.Value
+		}
+		curr = curr.Next
+	}
+	return ""
+}
+
 // Reassembles a SIP address into a buffer.
 func (addr *Addr) Append(b *bytes.Buffer) {
 	if addr == nil {
