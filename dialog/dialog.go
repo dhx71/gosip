@@ -380,7 +380,7 @@ func (dls *dialogState) handleRequest(msg *sip.Msg) bool {
 	case sip.MethodOptions: // Probably a keep-alive ping.
 		return dls.send(NewResponse(msg, sip.StatusOK))
 	case sip.MethodInvite: // Re-INVITEs are used to change the RTP or signalling path.
-		dls.remote = msg
+		//dls.remote = msg // DH breaks BYE
 		dls.checkSDP(msg)
 		respMsg := NewResponse(msg, sip.StatusOK)
 		respMsg.Payload = dls.invite.Payload // DH includes initial payload in response
