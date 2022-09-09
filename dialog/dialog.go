@@ -385,8 +385,8 @@ func (dls *dialogState) handleRequest(msg *sip.Msg) bool {
 		respMsg := NewResponse(msg, sip.StatusOK)
 		respMsg.Payload = dls.invite.Payload // DH includes initial payload in response
 		// DH replace invite tags (dialog-id) with re-INVITE's tags so that BYE doesn't get `Call/Transaction Does Not Exist`
-		dls.invite.To.SetParam("tag", msg.From.GetParam("tag"))
-		dls.invite.From.SetParam("tag", msg.To.GetParam("tag"))
+		//dls.invite.To.SetParam("tag", msg.From.GetParam("tag"))
+		//dls.invite.From.SetParam("tag", msg.To.GetParam("tag"))
 		return dls.sendResponse(respMsg)
 	case sip.MethodAck: // Re-INVITE response has been ACK'd.
 		dls.response = nil
