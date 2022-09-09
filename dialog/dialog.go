@@ -383,7 +383,8 @@ func (dls *dialogState) handleRequest(msg *sip.Msg) bool {
 		dls.remote = msg
 		dls.checkSDP(msg)
 		respMsg := NewResponse(msg, sip.StatusOK)
-		respMsg.Payload = dls.invite.Payload
+		respMsg.Payload = dls.invite.Payload // DH includes initial payload in response
+		dls.invite = msg                     // DH replace invite with re-INVITE so that BYE doesn't get `Call/Transaction Does Not Exist`
 		return dls.sendResponse(respMsg)
 	case sip.MethodAck: // Re-INVITE response has been ACK'd.
 		dls.response = nil
